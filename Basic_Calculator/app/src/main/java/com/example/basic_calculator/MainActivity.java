@@ -17,7 +17,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void add(View view){
+
+    public void area(View view){
+        performOperation("area");
+    }
+
+    public void per(View view){
+        performOperation("per");
+    }
+    public void performOperation(String string){
         EditText t1 = (EditText) findViewById(R.id.Edittxtnum1);
         EditText t2 = (EditText) findViewById(R.id.Edittxtnum2);
 
@@ -26,11 +34,18 @@ public class MainActivity extends AppCompatActivity {
         int n2 = Integer.parseInt(t2.getText().toString());
 
         //process for calculation
-        int ans = n1 + n2;
+        int ans = 0;
+        if(string.equals("area")){
+            ans = n1 * n2;
+        } else if (string.equals("per")) {
+            ans = n1 + n2 + n1 +n2;
+        } else{
+//            ans = "Invalid Input";
+        }
 
         //Display th result
         TextView res = (TextView) findViewById(R.id.Edittxtres);
-        res.setText("The sum is " +ans);
+        res.setText("The result is " +ans);
     }
 
 }
